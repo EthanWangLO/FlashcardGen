@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Flashcard{
   private String front;
   private String back;
-
+  //setting up constructors and getfront getback
   public Flashcard(String fr, String ba)
   {
     this.front = fr;
@@ -27,7 +27,7 @@ public class Deck{
   { cards.add(card); }
   public void removeCard(int index)
   {
-    if (index>=0 && index<cards.size())
+    if (index>=0 && index<cards.size()) //make sure cant remove a 0
     {
       cards.remove(index);
     }
@@ -50,7 +50,7 @@ public class Deck{
   }
   public void shuffle()
   {
-    Collections.shuffle(cards);
+    Collections.shuffle(cards); // shuffle the cards
   }
   public int size()
   {
@@ -58,7 +58,7 @@ public class Deck{
   }
   pubic void printAllCards()
   {
-    for (int i = 0; i <cards.size();i++)
+    for (int i = 0; i <cards.size();i++) // for loop to print all of the cards
       {
         System.out.println("Card" + (i+1) + ":\n" + cards.get(i) + "\n");
       }
@@ -84,7 +84,7 @@ public class QuizSession
       int correct = 0;
 
       for (Flashcard card: cards)
-        {
+        {  //setting up the question for each card
           System.out.println("Front: " + card.getFront());
           System.out.print("Your answer: ");
           String answer = scanner.nextLine();
@@ -98,7 +98,7 @@ public class QuizSession
           {
             System,out.println("Incorrect. The correct answer was: " + card.getBack() + "\n");
           }
-        }
+        } //prints the total correct
       System.out.println("You got " + correct + "/" + cards.size() + " correct.");
     }
     //Multiple choice quiz: user picks from 4 options
@@ -127,7 +127,7 @@ public class QuizSession
               }
             }
           Collections.shuffle(options);
-
+          //print out the options to see
           System.out.println("Front: " + card.getFront());
           for (int i = 0; i<4; i++)
             {
@@ -146,7 +146,7 @@ public class QuizSession
           {
             System.out.println("Incorrect. The correct answer was: " + card.getBack() + "\n");
           }
-        }
+        }//print total score
       System.out.println("You got " + correct + "/" + cards.size() + " correct.");
     }
     //Flashcard review session
@@ -158,14 +158,14 @@ public class QuizSession
         for (Flashcard card : cards) {
             boolean showingFront = frontFirst;
             boolean flipping = true;
-
+            
             while (flipping) {
                 if (showingFront) {
                     System.out.println("Front: " + card.getFront());
                 } else {
                     System.out.println("Back: " + card.getBack());
                 }
-
+                //show the front/back and then show the opposite based on user input
                 System.out.print("Type 'flip' to see the other side, or 'next' to move on: ");
                 String command = scanner.nextLine().toLowerCase();
 
